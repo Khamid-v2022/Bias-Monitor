@@ -1,0 +1,14 @@
+.logo-img {
+    height: 75px;
+    width: 75px;
+}
+
+.main-banner .right-image {
+    text-align: center;
+}
+.summary {
+    margin-top: 50px;
+}
+.summary h3 {
+    line-height: 3rem;
+}
