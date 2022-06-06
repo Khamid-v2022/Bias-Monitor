@@ -258,14 +258,29 @@
     </div>
     <div class="container">
       <div class="row">
+        <?php 
+          if(!isset($_GET['order_by'])){
+            $order_by = "date_of_article";
+          }else{
+            $order_by = $_GET['order_by'];
+          }
+        ?>
+        <input id="selected_id" type="hidden" value="<?=$_GET['id']?>">
+        <div style="display: flex; align-items: center; justify-content: end;">
+          <label for="sort_select" style="margin-right: 10px;">Sort By:</label>
+          <select class="form-control" id="sort_select" style="width: 100px">
+            <option value="date_of_article" <?=$order_by=="date_of_article"?"selected":""?>>Date</option>
+            <option value="bias_pos" <?=$order_by=="bias_pos"?"selected":""?>>Positive Score</option>
+            <option value="bias_neg" <?=$order_by=="bias_neg"?"selected":""?>>Negative Score</option>
+          </select>
+        </div>
         <div class="table-responsive" style="padding:15px;"> 
-         
            <table id="bias_master_data" class="table table-striped table-bordered">  
               <thead>  
                 <tr>  
                   <td class="text-center">Article Date</td>  
                   <td class="text-center">Domain</td>
-                  <td class="text-center">Article Title</td>   
+                  <td class="text-center">Article Title <span class="text-muted">(Total sentences)</span></td>   
                   <td class="text-center">
                     <?php 
                     if($exist_topic2){
@@ -279,16 +294,18 @@
                 </tr>  
               </thead>  
               <?php  
+                
+
                   $query4 = "SELECT detail.*, sentences.* FROM (
                     SELECT * FROM bias_detail detail WHERE bias_id = " . $_GET['id'] . ") detail 
                   LEFT JOIN (
-                      SELECT bias_detail_id, IFNULL(SUM(ROUND(bias_neg)), 0) bias_neg, IFNULL(SUM(ROUND(bias_neu)), 0) bias_neu, IFNULL(SUM(ROUND(bias_pos)), 0) bias_pos 
+                      SELECT bias_detail_id, IFNULL(SUM(ROUND(bias_neg)), 0) bias_neg, IFNULL(SUM(ROUND(bias_neu)), 0) bias_neu, IFNULL(SUM(ROUND(bias_pos)), 0) bias_pos, COUNT(id) AS number_of_count 
                       FROM article_sentences 
                       WHERE bias_master_id = " . $_GET['id'] . " 
                       GROUP BY bias_detail_id
                   ) sentences 
                   ON detail.id = sentences.bias_detail_id 
-                  ORDER BY date_of_article DESC, article_url, article_title";
+                  ORDER BY " . $order_by . " DESC, article_url, article_title";
 
                   $results = mysqli_query($conn, $query4);
                     
@@ -297,7 +314,7 @@
                       echo '<tr>'; 
                         echo '<td class="text-center">'. $row['date_of_article'] .'</td>'; 
                         echo '<td><a href="' . $row['article_url'] . '" target="_black">'. getUrlFromPath($row['article_url']) . '</a></td>';
-                        echo '<td title="' . $row['article_title'] . '"><a  class="article-text" href="view_article.php?id=' . $row['id'] . '&bias_id=' . $row['bias_id'] . '" target="_black">' . $row['article_title'] . '</td>';
+                        echo '<td title="' . $row['article_title'] . '"><a  class="article-text" href="view_article.php?id=' . $row['id'] . '&bias_id=' . $row['bias_id'] . '" target="_black">' . $row['article_title'] . ' <span class="text-muted">(' . $row['number_of_count'] . ')' . '</span></td>';
 
                         if($exist_topic2){
                           echo '<td><b>';
@@ -315,10 +332,11 @@
                           echo '<td>' . $topics[0] . ": " . $row['bias_1_count'] . '</td>';
                         }
                         
-                        echo '<td>Neg: ' . $row['bias_neg'] . '<br/>';
+                        echo '<td>'; 
+                        // echo 'Total sentences: ' . $row['number_of_count'] . '</br>';
+                        echo 'Neg: ' . $row['bias_neg'] . '<br/>';
                         echo 'Neu: ' . $row['bias_neu'] . '</br>';
                         echo 'Pos: ' . $row['bias_pos'] . '</td>';
-                          
                       echo '</tr>';  
                     }
                   }
@@ -390,6 +408,8 @@
       histogram_bias1_pos = <?php  echo json_encode($histogram_bias1_pos); ?>;
       
   <?php } ?>
+
+  
 </script>
 
 <script src="assets/js/report.js"></script>

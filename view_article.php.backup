@@ -8,14 +8,14 @@ require('include/header.php');
 		$topics = [$item['bias_1'], $item['bias_2']];
 	}
 	
-	// $negative_words = [];
-	// $query_word = "SELECT word FROM negative_words";
-	// $results = mysqli_query($conn, $query_word);
-	// if($results->num_rows > 0){
- //    while($item = $results->fetch_assoc()) {
- //      array_push($negative_words, $item['word']);
- //    }
-	// }
+	$negative_words = [];
+	$query_word = "SELECT word FROM negative_words";
+	$results = mysqli_query($conn, $query_word);
+	if($results->num_rows > 0){
+    while($item = $results->fetch_assoc()) {
+      array_push($negative_words, $item['word']);
+    }
+	}
 
 	$query_article = "SELECT * FROM bias_detail WHERE id = " . $_GET['id'];
 	$results = mysqli_query($conn, $query_article);
@@ -25,7 +25,7 @@ require('include/header.php');
 	}
 
 
- 	$query = "SELECT bias_id, article_title, article_text, bias_neg, bias_neu, bias_pos FROM bias_detail detail
+ 	$query = "SELECT bias_id, article_title, article_text, bias_neg, bias_neu, bias_pos, detail.bias_selected FROM bias_detail detail
  	LEFT JOIN article_sentences sentences ON detail.id = sentences.bias_detail_id
  	WHERE detail.id = " . $_GET['id'];
 	
@@ -35,31 +35,50 @@ require('include/header.php');
 	$text = "";
 
 	$index = 0;
-	$total_rows = 0;
 	
 	if($results->num_rows > 0){
-			$total_rows = $results->num_rows;
     	while($row = $results->fetch_assoc()) {
     		$title = $row['article_title'];
 
     		$row_text = $row['article_text'];
     		$index = 0;
     		
-    		switch(get_sentences_status($row)){
-  				case "Neg":
+    		while($index < count($negative_words)){
+    			$end = $index + 2999;
+    			if( $index + 2999 >= count($negative_words)){
+    				$end = count($negative_words) - 1;
+    			}
+    			$keys = array_slice($negative_words, $index, 3000);
+
+    			switch(get_sentences_status($row)){
+    				case "Neg":
+    					$color = "red";
+    					break;
+    				case "Neu":
+    					$color = "#daa732";
+    					break;
+    				case "Pos":
+    					$color = "blue";
+    					break;
+    			}
+    			$row_text = highlightsWords($row_text, implode(" ", $keys), $color);
+    			$index += 3000;
+    		}
+    		switch($row['bias_selected']){
+  				case "bias_1":
   					$color = "red";
+  					$row_text = highlightsWords($row_text, $topics[0], "blue");
+  					$row_text = highlightsWords($row_text, $topics[1], "red");
   					break;
-  				case "Neu":
-  					$color = "#daa732";
+  				case "bias_2":
+  					$row_text = highlightsWords($row_text, $topics[1], "blue");
+  					$row_text = highlightsWords($row_text, $topics[0], "red");
   					break;
-  				case "Pos":
+  				case "neutral":
   					$color = "blue";
-  					break;
-  				default:
-  					$color = "black";
+  					$row_text = highlightsWords($row_text, implode(" ", $topics), "#daa732");
   					break;
   			}
-				$row_text = highlightsSentences($row_text, $color);
     		$text .= "<br/>" . $row_text;
     	}
   }
@@ -73,7 +92,6 @@ require('include/header.php');
   	$score_neg = $row['bias_neg'];
   	$score_neu = $row['bias_neu'];
   	$score_pos = $row['bias_pos'];
-  	$score_no = $total_rows - $score_neg - $score_neu - $score_pos;
   }
 
 	function highlightsWords($text, $words, $color) {
@@ -83,13 +101,7 @@ require('include/header.php');
 	  	return preg_replace($re, '<span style="color:' . $color . '">$0</span>', $text);
 	}
 
-	function highlightsSentences($text, $color) {
-	  	return '<span style="color:' . $color . '">' . $text . '</span>';
-	}
-
 	function get_sentences_status($row){
-		if($row['bias_neg'] == 0 && $row['bias_neu'] == 0 && $row['bias_pos'] == 0)
-			return "";
 		$max = max(array($row['bias_neg'], $row['bias_neu'], $row['bias_pos']));
 		if($row['bias_neg'] == $max)
 			return "Neg";
@@ -97,6 +109,7 @@ require('include/header.php');
 			return "Neu";
 		else if($row['bias_pos'] == $max)
 			return "Pos";
+		return "";
 	}
 ?>
 <style type="text/css">
@@ -106,33 +119,8 @@ require('include/header.php');
 	}
 
 	.score-item {
-		padding: 0 15px;
+		padding: 0 10px;
 		color: #999;
-    position: relative;
-    margin-left: 10px;
-	}
-
-	.score-item:before {
-		content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    margin-top: 9px;
-    border: 5px solid;
-    left:  0px;
-	}
-
-	.neg-score:before {
-		border-color: red;
-	}
-	.pos-score:before {
-		border-color: blue;
-	}
-	.neu-score:before {
-		border-color: #daa732;
-	}
-	.no-score:before {
-		border-color: black;
 	}
 </style>
 
@@ -168,12 +156,7 @@ require('include/header.php');
       <h2><?=$title?></h2>
     </div>
     <div class="text-center my-5">
-    	<p><b>Scores:</b>
-    		<span class="score-item neg-score">Negative: <?=$score_neg?></span>
-    		<span class="score-item neu-score">Neutral: <?=$score_neu?></span>
-    		<span class="score-item pos-score">Positive: <?=$score_pos?></span>
-    		<span class="score-item no-score">No-Score: <?=$score_no?></span>
-    	</p>
+    	<p><b>Scores:</b><span class="score-item">Negative: <?=$score_neg?></span><span class="score-item">Neutral: <?=$score_neu?></span><span class="score-item">Positive: <?=$score_pos?></span></p>
     </div>
            
     <div class="mt-4">

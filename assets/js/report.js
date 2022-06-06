@@ -1,6 +1,7 @@
 $(function() { 
     $('#bias_master_data').DataTable({
-        "pageLength": 100
+        "pageLength": 100,
+        "ordering": false
     }); 
     
     if(url_datas.length > 0){
@@ -671,5 +672,12 @@ $(function() {
             triggerChartResize();
         }, 200);
     };
+
+    $("#sort_select").on("change", function(){
+        // console.log($(this).val());
+        // console.log($("#selected_id").val());
+
+        document.location = '/report.php?id=' + $("#selected_id").val() + '&order_by=' + $(this).val() + '#topics';
+    })
 })
 
