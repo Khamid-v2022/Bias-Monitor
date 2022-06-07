@@ -1,5 +1,5 @@
 <?php  
-  require('include/header.php');
+  require('include/header_no_bot.php');
   function getUrlFromPath($path_url){
     $parse = parse_url($path_url);
     $url = preg_replace('#^www\.(.+\.)#i', '$1', $parse['host']);
@@ -119,6 +119,12 @@
     $histogram_bias1_neg = [];
     $histogram_bias1_neu = [];
     $histogram_bias1_pos = [];
+
+    if($exist_topic2){
+      $histogram_bias2_neg = [];
+      $histogram_bias2_neu = [];
+      $histogram_bias2_pos = [];
+    }
     
     if($results->num_rows > 0){
         while($item = $results->fetch_assoc()) {
@@ -126,6 +132,11 @@
             array_push($histogram_bias1_neg, $item['bias_neg']); 
             array_push($histogram_bias1_neu, $item['bias_neu']); 
             array_push($histogram_bias1_pos, $item['bias_pos']);  
+            if($exist_topic2){
+              array_push($histogram_bias2_neg, $item['bias2_neg']); 
+              array_push($histogram_bias2_neu, $item['bias2_neu']); 
+              array_push($histogram_bias2_pos, $item['bias2_pos']);  
+            } 
         }
     }
 
@@ -294,8 +305,6 @@
                 </tr>  
               </thead>  
               <?php  
-                
-
                   $query4 = "SELECT detail.*, sentences.* FROM (
                     SELECT * FROM bias_detail detail WHERE bias_id = " . $_GET['id'] . ") detail 
                   LEFT JOIN (
@@ -396,20 +405,35 @@
   var histogram_bias1_neu = [];
   var histogram_bias1_pos = [];
 
+  var histogram_bias2_neg = [];
+  var histogram_bias2_neu = [];
+  var histogram_bias2_pos = [];
+
   var score_legend = [];
   score_legend[0] = '<?php echo $topics[0] . " Negative"; ?>';
   score_legend[1] = '<?php echo $topics[0] . " Neutral"; ?>';
   score_legend[2] = '<?php echo $topics[0] . " Positive"; ?>';
+
+  <?php 
+    if($exist_topic2){
+  ?>
+    score_legend[3] = '<?php echo $topics[1] . " Negative"; ?>';
+    score_legend[4] = '<?php echo $topics[1] . " Neutral"; ?>';
+    score_legend[5] = '<?php echo $topics[1] . " Positive"; ?>';
+  <?php } ?>
 
   <?php if(count($score_histogram_dates) > 0){ ?>
       score_histogram_dates = <?php echo json_encode($score_histogram_dates); ?>;
       histogram_bias1_neg = <?php  echo json_encode($histogram_bias1_neg); ?>;
       histogram_bias1_neu = <?php  echo json_encode($histogram_bias1_neu); ?>;
       histogram_bias1_pos = <?php  echo json_encode($histogram_bias1_pos); ?>;
-      
-  <?php } ?>
-
-  
+      <?php 
+        if($exist_topic2){
+      ?>
+        histogram_bias2_neg = <?php  echo json_encode($histogram_bias2_neg); ?>;
+        histogram_bias2_neu = <?php  echo json_encode($histogram_bias2_neu); ?>;
+        histogram_bias2_pos = <?php  echo json_encode($histogram_bias2_pos); ?>;
+  <?php }} ?>
 </script>
 
 <script src="assets/js/report.js"></script>

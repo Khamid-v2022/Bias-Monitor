@@ -372,7 +372,85 @@ $(function() {
         $("#line_zoom").next().css({display: "block"});
     }
 
-    var series_2 = [
+    var series_2 = [];
+    
+    if(exist_topic2){
+        series_2 = [
+            {
+                name: score_legend[0],
+                type: 'line',
+                smooth: true,
+                symbolSize: 6,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 2
+                    }
+                },
+                data: histogram_bias1_neg
+            },
+            {
+                name: score_legend[1],
+                type: 'line',
+                smooth: true,
+                symbolSize: 6,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 2
+                    }
+                },
+                data: histogram_bias1_neu
+            },
+            {
+                name: score_legend[2],
+                type: 'line',
+                smooth: true,
+                symbolSize: 6,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 2
+                    }
+                },
+                data: histogram_bias1_pos
+            },
+            {
+                name: score_legend[3],
+                type: 'line',
+                smooth: true,
+                symbolSize: 6,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 2
+                    }
+                },
+                data: histogram_bias2_neg
+            },
+            {
+                name: score_legend[4],
+                type: 'line',
+                smooth: true,
+                symbolSize: 6,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 2
+                    }
+                },
+                data: histogram_bias2_neu
+            },
+            {
+                name: score_legend[5],
+                type: 'line',
+                smooth: true,
+                symbolSize: 6,
+                itemStyle: {
+                    normal: {
+                        borderWidth: 2
+                    }
+                },
+                data: histogram_bias2_pos
+            }
+        ]
+    }else{
+        series_2 = [
             {
                 name: score_legend[0],
                 type: 'line',
@@ -410,121 +488,7 @@ $(function() {
                 data: histogram_bias1_pos
             }
         ];
-    // if(exist_topic2){
-    //     series_2 = [
-    //         {
-    //             name: score_legend[0],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias1_neg
-    //         },
-    //         {
-    //             name: score_legend[1],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias1_neu
-    //         },
-    //         {
-    //             name: score_legend[2],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias1_pos
-    //         },
-    //         {
-    //             name: score_legend[3],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias2_neg
-    //         },
-    //         {
-    //             name: score_legend[4],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias2_neu
-    //         },
-    //         {
-    //             name: score_legend[5],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias2_pos
-    //         }
-    //     ]
-    // }else{
-    //     series_2 = [
-    //         {
-    //             name: score_legend[0],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias1_neg
-    //         },
-    //         {
-    //             name: score_legend[1],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias1_neu
-    //         },
-    //         {
-    //             name: score_legend[2],
-    //             type: 'line',
-    //             smooth: true,
-    //             symbolSize: 6,
-    //             itemStyle: {
-    //                 normal: {
-    //                     borderWidth: 2
-    //                 }
-    //             },
-    //             data: histogram_bias1_pos
-    //         }
-    //     ];
-    // }
+    }
 
     if(score_histogram_dates.length > 0){
         $(".no-data").css({display: "none"});

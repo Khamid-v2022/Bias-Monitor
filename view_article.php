@@ -1,5 +1,5 @@
 <?php 
-require('include/header.php'); 
+require('include/header_no_bot.php'); 
 
 	$query_topic = "SELECT * FROM bias_master WHERE id = " . $_GET['bias_id'];
 	$results = mysqli_query($conn, $query_topic);
