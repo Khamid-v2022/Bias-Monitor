@@ -7,6 +7,15 @@ require('include/header_no_bot.php');
 		$item = $results->fetch_assoc();
 		$topics = [$item['bias_1'], $item['bias_2']];
 	}
+	
+	// $negative_words = [];
+	// $query_word = "SELECT word FROM negative_words";
+	// $results = mysqli_query($conn, $query_word);
+	// if($results->num_rows > 0){
+ //    while($item = $results->fetch_assoc()) {
+ //      array_push($negative_words, $item['word']);
+ //    }
+	// }
 
 	$query_article = "SELECT * FROM bias_detail WHERE id = " . $_GET['id'];
 	$results = mysqli_query($conn, $query_article);
@@ -16,7 +25,7 @@ require('include/header_no_bot.php');
 	}
 
 
- 	$query = "SELECT bias_id, article_title, article_text, IFNULL(is_neg, 0) is_neg, IFNULL(is_neu, 0) is_neu, IFNULL(is_pos, 0) is_pos, detail.bias_selected AS main_selected, sentences.bias_selected AS sub_selected, flag FROM bias_detail detail
+ 	$query = "SELECT bias_id, article_title, article_text, bias_neg, bias_neu, bias_pos FROM bias_detail detail
  	LEFT JOIN article_sentences sentences ON detail.id = sentences.bias_detail_id
  	WHERE detail.id = " . $_GET['id'];
 	
@@ -27,8 +36,6 @@ require('include/header_no_bot.php');
 
 	$index = 0;
 	$total_rows = 0;
-
-	$prev_flag = -1;	//initial flag
 	
 	if($results->num_rows > 0){
 			$total_rows = $results->num_rows;
@@ -53,29 +60,20 @@ require('include/header_no_bot.php');
   					break;
   			}
 				$row_text = highlightsSentences($row_text, $color);
-
-				if($prev_flag != $row['flag'])
-    			$text .= "<br/>" . $row_text;
-    		else
-    			$text .= $row_text;
-    		
-    		$prev_flag = $row['flag'];
+    		$text .= "<br/>" . $row_text;
     	}
   }
 
 
   // Get Article Score
-  $score_query = "SELECT IFNULL(SUM(is_neg), 0) bias_neg, IFNULL(SUM(is_neu), 0) bias_neu, IFNULL(SUM(is_pos), 0) bias_pos FROM article_sentences WHERE bias_detail_id = " . $_GET['id'];
+  $score_query = "SELECT IFNULL(SUM(ROUND(bias_neg)), 0) bias_neg, IFNULL(SUM(ROUND(bias_neu)), 0) bias_neu, IFNULL(SUM(ROUND(bias_pos)), 0) bias_pos FROM article_sentences WHERE bias_detail_id = " . $_GET['id'];
   $results = mysqli_query($conn, $score_query);
   if($results->num_rows > 0){
   	$row = $results->fetch_assoc();
   	$score_neg = $row['bias_neg'];
   	$score_neu = $row['bias_neu'];
   	$score_pos = $row['bias_pos'];
-  	if($total_rows == 1)
-  		$score_no = $total_rows - $score_neg - $score_neu - $score_pos - 1;
-  	else
-  		$score_no = $total_rows - $score_neg - $score_neu - $score_pos;
+  	$score_no = $total_rows - $score_neg - $score_neu - $score_pos;
   }
 
 	function highlightsWords($text, $words, $color) {
@@ -90,14 +88,14 @@ require('include/header_no_bot.php');
 	}
 
 	function get_sentences_status($row){
-		if($row['is_neg'] == 0 && $row['is_neu'] == 0 && $row['is_pos'] == 0)
+		if($row['bias_neg'] == 0 && $row['bias_neu'] == 0 && $row['bias_pos'] == 0)
 			return "";
-		$max = max(array($row['is_neg'], $row['is_neu'], $row['is_pos']));
-		if($row['is_neg'] == $max)
+		$max = max(array($row['bias_neg'], $row['bias_neu'], $row['bias_pos']));
+		if($row['bias_neg'] == $max)
 			return "Neg";
-		else if($row['is_neu'] == $max)
+		else if($row['bias_neu'] == $max)
 			return "Neu";
-		else if($row['is_pos'] == $max)
+		else if($row['bias_pos'] == $max)
 			return "Pos";
 	}
 ?>

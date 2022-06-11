@@ -104,38 +104,13 @@
 ?>
 
 <?php 
-  $query_score_histogram = "SELECT detail.date_of_article, IFNULL(SUM(bias1_neg), 0) bias1_neg, IFNULL(SUM(bias1_neu), 0) bias1_neu, IFNULL(SUM(bias1_pos), 0) bias1_pos, IFNULL(SUM(bias2_neg), 0) bias2_neg, IFNULL(SUM(bias2_neu), 0) bias2_neu, IFNULL(SUM(bias2_pos), 0) bias2_pos 
-  FROM (
-    SELECT * FROM bias_detail detail 
-    WHERE bias_id = " . $_GET['id'] . ") detail
-  LEFT JOIN ( 
-    SELECT a.*, IFNULL(b.bias2_neg, 0) bias2_neg, IFNULL(b.bias2_neu, 0) bias2_neu, IFNULL(b.bias2_pos, 0) bias2_pos 
-    FROM ( 
-      SELECT bias_detail_id, SUM(is_neg) bias1_neg, SUM(is_neu) bias1_neu, SUM(is_pos) bias1_pos 
-      FROM article_sentences 
-      WHERE bias_selected = 'bias_1' AND bias_master_id = " . $_GET['id'] . " 
-      GROUP BY bias_detail_id) a 
-    LEFT JOIN ( 
-      SELECT bias_detail_id, SUM(is_neg) bias2_neg, SUM(is_neu) bias2_neu, SUM(is_pos) bias2_pos 
-      FROM article_sentences 
-      WHERE bias_selected = 'bias_2' AND bias_master_id = " . $_GET['id'] . " 
-      GROUP BY bias_detail_id) b 
-    ON a.bias_detail_id = b.bias_detail_id 
-
-    UNION 
-
-    SELECT b.bias_detail_id, IFNULL(bias1_neg, 0) bias1_neg, IFNULL(bias1_neu, 0) bias1_neu, IFNULL(bias1_pos, 0) bias1_pos, b.bias2_neg, b.bias2_neu, b.bias2_pos 
-    FROM ( 
-      SELECT bias_detail_id, SUM(is_neg) bias1_neg, SUM(is_neu) bias1_neu, SUM(is_pos) bias1_pos 
-      FROM article_sentences 
-      WHERE bias_selected = 'bias_1' AND bias_master_id = " . $_GET['id'] . " 
-      GROUP BY bias_detail_id) a 
-    RIGHT JOIN ( 
-      SELECT bias_detail_id, SUM(is_neg) bias2_neg, SUM(is_neu) bias2_neu, SUM(is_pos) bias2_pos 
-      FROM article_sentences 
-      WHERE bias_selected = 'bias_2' AND bias_master_id = " . $_GET['id'] . " 
-      GROUP BY bias_detail_id) b 
-    ON a.bias_detail_id = b.bias_detail_id ) sentences 
+  $query_score_histogram = "SELECT detail.date_of_article, IFNULL(SUM(bias_neg), 0) bias_neg, IFNULL(SUM(bias_neu), 0) bias_neu, IFNULL(SUM(bias_pos), 0) bias_pos 
+  FROM (SELECT * FROM bias_detail detail WHERE bias_id = " . $_GET['id'] . ") detail 
+  LEFT JOIN (
+    SELECT bias_detail_id, SUM(ROUND(bias_neg)) bias_neg, SUM(ROUND(bias_neu)) bias_neu, SUM(ROUND(bias_pos)) bias_pos 
+    FROM article_sentences 
+    WHERE  bias_master_id = " . $_GET['id'] . "
+    GROUP BY bias_detail_id) sentences 
   ON detail.id = sentences.bias_detail_id 
   GROUP BY date_of_article 
   ORDER BY date_of_article";
@@ -155,9 +130,9 @@
   if($results->num_rows > 0){
       while($item = $results->fetch_assoc()) {
           array_push($score_histogram_dates, $item['date_of_article']);
-          array_push($histogram_bias1_neg, $item['bias1_neg']); 
-          array_push($histogram_bias1_neu, $item['bias1_neu']); 
-          array_push($histogram_bias1_pos, $item['bias1_pos']);  
+          array_push($histogram_bias1_neg, $item['bias_neg']); 
+          array_push($histogram_bias1_neu, $item['bias_neu']); 
+          array_push($histogram_bias1_pos, $item['bias_pos']);  
           if($exist_topic2){
             array_push($histogram_bias2_neg, $item['bias2_neg']); 
             array_push($histogram_bias2_neu, $item['bias2_neu']); 
@@ -305,15 +280,10 @@
         <input id="selected_id" type="hidden" value="<?=$_GET['id']?>">
         <div style="display: flex; align-items: center; justify-content: end;">
           <label for="sort_select" style="margin-right: 10px;">Sort By:</label>
-          <select class="form-control" id="sort_select" style="width: 150px">
+          <select class="form-control" id="sort_select" style="width: 100px">
             <option value="date_of_article" <?=$order_by=="date_of_article"?"selected":""?>>Date</option>
-            <option value="bias1_neg" <?=$order_by=="bias1_neg"?"selected":""?>><?=$topics[0]?> Score</option>
-            <?php 
-            if($exist_topic2){ ?>
-                <option value="bias2_neg" <?=$order_by=="bias2_neg"?"selected":""?>><?=$topics[1]?> Score</option>
-            <?php }
-            ?>
-            
+            <option value="bias_pos" <?=$order_by=="bias_pos"?"selected":""?>>Positive Score</option>
+            <option value="bias_neg" <?=$order_by=="bias_neg"?"selected":""?>>Negative Score</option>
           </select>
         </div>
         <div class="table-responsive" style="padding:15px;"> 
@@ -336,42 +306,17 @@
                 </tr>  
               </thead>  
               <?php  
-                  $query4 = "SELECT detail.*, sentences.*, IFNULL(c.number_of_count, 0) number_of_count FROM (
+                  $query4 = "SELECT detail.*, sentences.* FROM (
                     SELECT * FROM bias_detail detail WHERE bias_id = " . $_GET['id'] . ") detail 
                   LEFT JOIN (
-                    SELECT a.*, IFNULL(b.bias2_neg, 0) bias2_neg, IFNULL(b.bias2_neu, 0) bias2_neu, IFNULL(b.bias2_pos, 0) bias2_pos 
-                    FROM ( 
-                      SELECT bias_detail_id, SUM(is_neg) bias1_neg, SUM(is_neu) bias1_neu, SUM(is_pos) bias1_pos 
+                      SELECT bias_detail_id, IFNULL(SUM(ROUND(bias_neg)), 0) bias_neg, IFNULL(SUM(ROUND(bias_neu)), 0) bias_neu, IFNULL(SUM(ROUND(bias_pos)), 0) bias_pos, COUNT(id) AS number_of_count 
                       FROM article_sentences 
-                      WHERE bias_selected = 'bias_1' AND bias_master_id = " . $_GET['id'] . " 
-                      GROUP BY bias_detail_id) a 
-                    LEFT JOIN ( 
-                      SELECT bias_detail_id, SUM(is_neg) bias2_neg, SUM(is_neu) bias2_neu, SUM(is_pos) bias2_pos 
-                      FROM article_sentences 
-                      WHERE bias_selected = 'bias_2' AND bias_master_id = " . $_GET['id'] . " 
-                      GROUP BY bias_detail_id) b 
-                    ON a.bias_detail_id = b.bias_detail_id 
-                    
-                    UNION 
-
-                    SELECT b.bias_detail_id, IFNULL(bias1_neg, 0) bias1_neg, IFNULL(bias1_neu, 0) bias1_neu, IFNULL(bias1_pos, 0) bias1_pos, b.bias2_neg, b.bias2_neu, b.bias2_pos 
-                    FROM ( 
-                      SELECT bias_detail_id, SUM(is_neg) bias1_neg, SUM(is_neu) bias1_neu, SUM(is_pos) bias1_pos FROM article_sentences 
-                      WHERE bias_selected = 'bias_1' AND bias_master_id = " . $_GET['id'] . " 
-                      GROUP BY bias_detail_id) a 
-                    RIGHT JOIN ( 
-                      SELECT bias_detail_id, SUM(is_neg) bias2_neg, SUM(is_neu) bias2_neu, SUM(is_pos) bias2_pos FROM article_sentences 
-                      WHERE bias_selected = 'bias_2' AND bias_master_id = " . $_GET['id'] . " 
-                      GROUP BY bias_detail_id) b 
-                    ON a.bias_detail_id = b.bias_detail_id ) sentences 
+                      WHERE bias_master_id = " . $_GET['id'] . " 
+                      GROUP BY bias_detail_id
+                  ) sentences 
                   ON detail.id = sentences.bias_detail_id 
-                  LEFT JOIN (
-                    SELECT bias_detail_id, COUNT(id) AS number_of_count 
-                    FROM article_sentences 
-                    WHERE bias_master_id = " . $_GET['id'] . " GROUP BY bias_detail_id) c
-                  ON detail.id = c.bias_detail_id
                   ORDER BY " . $order_by . " DESC, article_url, article_title";
-                  
+
                   $results = mysqli_query($conn, $query4);
                     
                   if($results->num_rows > 0){
@@ -391,15 +336,17 @@
                             echo 'neutral';
                           echo '</b><br/>';
                           echo $topics[0] . ": " . $row['bias_1_count'] . '<br/>';
-                          echo $topics[1] . ": " .$row['bias_2_count'] . '</td>';
-
-                          echo '<td>' . $topics[0] . ": " . ($row['bias1_neg']?$row['bias1_neg']:0) . '<br/>';
-                          echo $topics[1] . ": " . ($row['bias2_neg']?$row['bias2_neg']:0) . '</td>';                  
+                          echo $topics[1] . ": " .$row['bias_2_count'] . '</td>';                          
                         }
                         else{
                           echo '<td>' . $topics[0] . ": " . $row['bias_1_count'] . '</td>';
-                          echo '<td>' . $topics[0] . ": " . ($row['bias1_neg']?$row['bias1_neg']:0) . '</td>';
                         }
+                        
+                        echo '<td>'; 
+                        // echo 'Total sentences: ' . $row['number_of_count'] . '</br>';
+                        echo 'Neg: ' . $row['bias_neg'] . '<br/>';
+                        echo 'Neu: ' . $row['bias_neu'] . '</br>';
+                        echo 'Pos: ' . $row['bias_pos'] . '</td>';
                       echo '</tr>';  
                     }
                   }
