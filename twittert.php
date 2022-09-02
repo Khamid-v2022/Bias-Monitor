@@ -26,9 +26,18 @@ if($results->num_rows > 0){
     $bias_neutral = $item['bias_neutral'];
 }
   
+
+// $twiit_message = "Latest updates for the news article <b>" . $bias_1 . "</b> vs <b>" . $bias_2 . "</b>.";
+// $twiit_message .= "</br>";
+// $twiit_message .= "Total articles " . ($bias_1_total + $bias_2_total + $bias_neutral);
+// $twiit_message .= "</br>";
+// $twiit_message .= $bias_1 . " " . $bias_1_total . " / " . $bias_2 . " " . $bias_2_total . " / " . "Neutral " . $bias_neutral;
+// $twiit_message .= "</br>";
+// $twiit_message .= "Check out more at <a href='https://www.biasmonitor.com' target='_black'>www.biasmonitor.com</a>";
+
 $twiit_message = "Latest updates for the news article " . $bias_1 . " vs " . $bias_2 . ".";
 $twiit_message .= "\n";
-$twiit_message .= "Total articles " . ($bias_1_total + $bias_2_total + $bias_neutral);
+$twiit_message .= "Total mentions " . ($bias_1_total + $bias_2_total);
 $twiit_message .= "\n";
 $twiit_message .= $bias_1 . " " . $bias_1_total . " / " . $bias_2 . " " . $bias_2_total . " / " . "Neutral " . $bias_neutral;
 $twiit_message .= "\n";

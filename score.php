@@ -21,21 +21,14 @@ $query_article = "SELECT id, bias_master_id, bias_detail_id, article_text FROM a
 
 $results = mysqli_query($conn, $query_article);
 
+
 if($results->num_rows > 0){
     while($item = $results->fetch_assoc()) {
       	
-      	// get topic according to the article
-
-    	$query_detail = "SELECT * FROM bias_detail WHERE id = " . $item['bias_detail_id'];
-		$results_detail = mysqli_query($conn, $query_detail);
-		if($results_detail->num_rows > 0){
-			$item_detail = $results_detail->fetch_assoc();
-
-			$default_bias_selected = $item_detail['bias_selected'];
-		}
-
-      	$query_bias = "SELECT * FROM bias_master WHERE id = " . $item['bias_master_id'];
+      	// get 2 Topic from Master table
+    	$query_bias = "SELECT * FROM bias_master WHERE id = " . $item['bias_master_id'];
 		$results_bias = mysqli_query($conn, $query_bias);
+		
 		if($results_bias->num_rows > 0){
 			$item_bias = $results_bias->fetch_assoc();
 			
@@ -43,9 +36,49 @@ if($results->num_rows > 0){
 			$bias_2 = $item_bias['bias_2'];
 		}
 
+      	// get title....ect according to the article
+    	$query_detail = "SELECT * FROM bias_detail WHERE id = " . $item['bias_detail_id'];
+		$results_detail = mysqli_query($conn, $query_detail);
+		if($results_detail->num_rows > 0){
+			$item_detail = $results_detail->fetch_assoc();
+
+			$default_bias_selected = trim($item_detail['bias_selected']);
+			$title = preg_replace("/[^A-Za-z0-9' -]/", "", strtolower($item_detail['article_title']));
+			
+			if(!$default_bias_selected){
+				if(!isset($bias_2) || (isset($bias_2) && !$bias_2)){
+					$default_bias_selected = "bias_1";
+				} else {
+					if(isset($bias_1) && strpos($title, strtolower($bias_1)) !== false){
+						$default_bias_selected = "bias_1";
+					}else if(isset($bias_2) && $bias_2 &&  strpos($title, strtolower($bias_2)) !== false){
+						$default_bias_selected = "bias_2";
+					}
+				}
+			}
+			
+			$bias_1_mentioned_count = (int)(trim($item_detail['bias_1_count']) ? $item_detail['bias_1_count'] : 0);
+			$bias_2_mentioned_count = (int)(trim($item_detail['bias_2_count']) ? $item_detail['bias_2_count'] : 0);
+		}
+
+
 		// remove special charecters and to lowercase
 		$text = preg_replace("/[^A-Za-z0-9' -]/", "", strtolower($item['article_text']));
 		$count = count(array_intersect($negative_words, explode(" ", $text)));
+
+		$bias_1_count = 0;
+		$bias_2_count = 0;
+
+		if(isset($bias_1))
+			$bias_1_mentioned_count += substr_count($text, strtolower($bias_1));
+		if(isset($bias_2) && $bias_2)
+			$bias_2_mentioned_count += substr_count($text, strtolower($bias_2));
+
+		// echo $item['id'] . " :: " . $text . ":::", $bias_1 . " ::: " . $bias_1_mentioned_count, "\r\n";
+
+		$update_detail_sql = "UPDATE bias_detail SET bias_selected = '" . $default_bias_selected . "', bias_1_count = " . $bias_1_mentioned_count . ", bias_2_count = " . $bias_2_mentioned_count . " WHERE id = " . $item_detail['id'];
+
+		mysqli_query($conn, $update_detail_sql);
 
 		$bias_1_negativity = 0; $bias_2_negativity = 0;
       	

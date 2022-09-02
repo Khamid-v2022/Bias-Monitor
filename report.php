@@ -397,8 +397,12 @@
                           echo $topics[1] . ": " . ($row['bias2_neg']?$row['bias2_neg']:0) . '</td>';                  
                         }
                         else{
-                          echo '<td>' . $topics[0] . ": " . $row['bias_1_count'] . '</td>';
-                          echo '<td>' . $topics[0] . ": " . ($row['bias1_neg']?$row['bias1_neg']:0) . '</td>';
+                          echo '<td>' . $topics[0] . ": " . (int)($row['bias_1_count']) . '</td>';
+                          echo '<td>';
+                          echo 'Neg: ' . $row['bias1_neg'] . '<br>';
+                          echo 'Neu: ' . $row['bias1_neu'] . '<br>';
+                          echo 'Pos: ' . $row['bias1_pos'];
+                          echo '</td>';
                         }
                       echo '</tr>';  
                     }
