@@ -1,0 +1,202 @@
+html {
+  overflow-x: hidden;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  background: #f8f8f8;
+  font-family: "inter";
+}
+
+/* Welcome Page */
+/* Body Wrapper */
+.bodyWrapper {
+  padding: 3em 0 1em 0;
+}
+.bodyWrapper .mainLogo {
+  margin-bottom: 5em;
+  display: inline-block;
+  text-decoration: none;
+}
+.mainHeading {
+  color: #11211d;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 1.2em;
+}
+.subHeading {
+  font-size: 35px;
+  font-weight: 700;
+  color: #11211d;
+  margin-bottom: 0.5em;
+}
+.mainText {
+  font-size: 25px;
+  color: #11211d;
+}
+.bodyWrapper .lgBtn {
+  border-radius: 8px;
+  background-color: #70cee7;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0.8em 3.5em;
+  margin-top: 4em;
+  transition: 200ms all ease-in-out;
+}
+.bodyWrapper .lgBtn:hover {
+  opacity: 0.7;
+}
+.bodyWrapper .linkDetails {
+  margin-top: 7em;
+}
+.smHeading {
+  color: #11211d;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 0.6;
+}
+.bodyWrapper .linkDetails .mainText {
+  line-height: 1.1;
+}
+.bodyWrapper .linkDetails .mainText a {
+  color: #11211d;
+  text-decoration: underline;
+}
+
+/* Order Page */
+.orderContents {
+  text-align: center;
+}
+.orderContents .mainText {
+  margin-bottom: 0.7em;
+}
+.oddText {
+  color: #999999;
+  font-size: 14px;
+}
+
+/* Order Table */
+.table.orderTable {
+  margin-top: 2em;
+  font-size: 14px;
+}
+.table.orderTable td {
+  border: none;
+}
+.table.orderTable tbody td {
+  color: #222222;
+}
+.table.orderTable tr {
+  border-top: 1px solid #dee2e6;
+}
+.table.orderTable tbody .oddColor td {
+  color: #999999;
+}
+.table.orderTable tr td:last-child {
+  text-align: right;
+}
+.table.orderTable tfoot tr {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+.table.orderTable tfoot tr td {
+  color: #222222;
+  font-weight: 700;
+}
+.secondOrderTable {
+  margin-top: 6em;
+}
+.secondOrderTable .mainText {
+  text-align: center;
+}
+.secondOrderTable .table.orderTable {
+  margin-top: 0.5em;
+}
+.secondOrderTable .table.orderTable tr td:last-child {
+  text-align: left;
+}
+.bodyWrapper.order .linkDetails {
+  margin-top: 15em;
+}
+
+/* Alert Page */
+.bodyWrapper .multiButtons .lgBtn {
+  padding: 0.4em;
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+}
+.bodyWrapper .multiButtons .lgBtn.blue {
+  background-color: #5243c2;
+  margin: 1.5em 0 0 1em;
+}
+
+/* Verfication Page */
+.mainText.odd {
+  line-height: 1.1;
+  margin-bottom: 1em;
+}
+a.mainText {
+  text-decoration: none;
+  color: #11211d;
+}
+
+/* Page Footer */
+.pageFooter {
+  background-color: #f1f1f1;
+  text-align: center;
+  padding: 2em 0;
+}
+.pageFooter .footerText {
+  color: #595959;
+  font-size: 14px;
+  font-family: "Poppins";
+  margin: 1.2em 0 2em 0;
+}
+.pageFooter .footerLink {
+  color: #939393;
+  font-size: 14px;
+  font-family: "Poppins";
+  text-decoration: underline;
+  margin: 0 0.6em 2em 0.6em;
+  display: inline-block;
+  transition: 200ms all ease-in-out;
+}
+.pageFooter .footerLink:hover {
+  color: black;
+}
+
+/* Media Query */
+@media (max-width: 992px) {
+  .mainHeading {
+    font-size: 35px;
+  }
+  .subHeading {
+    font-size: 28px;
+  }
+  .mainText {
+    font-size: 18px;
+  }
+  .bodyWrapper .lgBtn {
+    font-size: 18px;
+    padding: 0.8em 2.5em;
+    margin-top: 4em;
+  }
+  .bodyWrapper .linkDetails {
+    margin-top: 5em;
+  }
+  .smHeading {
+    font-size: 20px;
+  }
+}
+@media (max-width: 540px) {
+  .bodyWrapper .multiButtons .lgBtn.blue {
+    margin-left: 0;
+  }
+}

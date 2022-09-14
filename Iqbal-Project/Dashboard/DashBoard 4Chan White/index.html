@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4Chan</title>
+  <!-- boostrap cdn -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <!-- css cdn -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- fontawesome cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+    integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- font-family link-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Island+Moments&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Syne+Tactile&family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700&display=swap" rel="stylesheet" />
+  <!-- chart js cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
+  <!-- line  -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+  <!-- header start -->
+
+  <div class="header">
+    <div class="header_wrapper">
+      <div class="search_bar">
+        <div class="inner_search">
+          <input type="search" class="form-control" placeholder="Search here" />
+          <i class="fa fa-search"></i>
+                 <!-- Searches -->
+                 <div class="searchesBox">
+                  <div class="searchesHeading">Results</div>
+                  <div class="recentSearches">
+                    <div>
+                      <img src="./images/searches-icon.png" alt="" />
+                      <span class="searchItemHeading">Doge</span>
+                    </div>
+                    <a class="closedLink" href="#"
+                      ><i class="fa-solid fa-xmark"></i
+                    ></a>
+                  </div>
+                  <div class="recentSearches">
+                    <div>
+                      <img src="./images/searches-icon.png" alt="" />
+                      <span class="searchItemHeading">Doge</span>
+                    </div>
+                    <a class="closedLink" href="#"
+                      ><i class="fa-solid fa-xmark"></i
+                    ></a>
+                  </div>
+                  <div class="recentSearches">
+                    <div>
+                      <img src="./images/searches-icon.png" alt="" />
+                      <span class="searchItemHeading">Doge</span>
+                    </div>
+                    <a class="closedLink" href="#"
+                      ><i class="fa-solid fa-xmark"></i
+                    ></a>
+                  </div>
+                  <div class="searchesHeading">Recent Searches</div>
+                  <div class="recentSearches">
+                    <div>
+                      <img src="./images/searches-icon.png" alt="" />
+                      <span class="searchItemHeading">Doge</span>
+                    </div>
+                    <a class="closedLink" href="#"
+                      ><i class="fa-solid fa-xmark"></i
+                    ></a>
+                  </div>
+                  <div class="recentSearches">
+                    <div>
+                      <img src="./images/searches-icon.png" alt="" />
+                      <span class="searchItemHeading">Doge</span>
+                    </div>
+                    <a class="closedLink" href="#"
+                      ><i class="fa-solid fa-xmark"></i
+                    ></a>
+                  </div>
+                  <div class="recentSearches">
+                    <div>
+                      <img src="./images/searches-icon.png" alt="" />
+                      <span class="searchItemHeading">Doge</span>
+                    </div>
+                    <a class="closedLink" href="#"
+                      ><i class="fa-solid fa-xmark"></i
+                    ></a>
+                  </div>
+                </div>
+        </div>
+      </div>
+
+      <div class="user_login">
+        <div class="notification">
+          <i class="far fa-bell bell_icon">
+            <div class="notification_item">
+              <h5>Notifications (12)</h5>
+              <p>
+                <b>Markksantos’s</b> Order was automatically marked as
+                <b>Complete</b>
+              </p>
+              <span>2h ago</span>
+
+              <p>
+                <b>Markksantos’s</b> Order was automatically marked as
+                <b>Complete</b>
+              </p>
+              <span>2h ago</span>
+
+              <p>
+                <b>Markksantos’s</b> Order was automatically marked as
+                <b>Complete</b>
+              </p>
+              <span>2h ago</span>
+
+              <p>
+                <b>Markksantos’s</b> Order was automatically marked as
+                <b>Complete</b>
+              </p>
+              <span>2h ago</span>
+            </div>
+          </i>
+        </div>
+        <div class="user_logo">
+          <div class="user_logo_box">
+            MA
+            <div class="user_logo_box_items">
+              <li>Cameron Williamson</li>
+              <li class="cammeron_toogle">
+                Apperance
+                <label class="switch">
+                  <input type="checkbox" />
+                  <span class="slider round"></span>
+                </label>
+              </li>
+              <li>Referral</li>
+              <li>Billings</li>
+              <li>Settings</li>
+
+              <li>Sign out <i class="fa fa-sign-out sign_out_icon"></i></li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- header end -->
+
+
+  <!------------Sidebar Start-------------->
+  <div class="sidebar">
+    <input type="checkbox" id="check" />
+
+    <label for="check">
+      <i class="fas fa-bars" id="bars"></i>
+      <i class="fas fa-times" id="close"></i>
+    </label>
+
+    <div class="sidebar">
+      <div class="sidebar_logo">
+        <img src="images/headerLogo.png" alt="" />
+      </div>
+
+      <ul class="sidebar_ul sidebar_ul_dark">
+        <li>
+          <a href="#"><img src="sidebar_white_icon/d_i_w_01.png" alt="" class="sidebar_white_icons"> <img
+              src="sibedar_black_icon/d_i_b_01.png" alt="" class="sidebar_black_icons"> Summary</a>
+        </li>
+
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_02.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_02.png" alt="" class="sidebar_white_icons"> Trending</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_03.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_03.png" alt="" class="sidebar_white_icons"> Historical Data</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_04.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_04.png" alt="" class="sidebar_white_icons"> Watchlist</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_05.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_05.png" alt="" class="sidebar_white_icons"> Screener</a>
+        </li>
+        <li>
+          <a href="#"
+            ><img
+              src="./sibedar_black_icon/alert-icon.png"
+              alt=""
+              class="sidebar_black_icons"
+            />
+            <img
+              src="./sidebar_white_icon/alert-icon.png"
+              alt=""
+              class="sidebar_white_icons"
+            />
+            Alerts</a
+          >
+        </li>
+        <li style="margin-bottom:40px;">
+          <a href="#"><img src="sibedar_black_icon/d_i_b_06.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_06.png" alt="" class="sidebar_white_icons"> API(Coming Soon)</a>
+        </li>
+        <p style="color: rgba(17, 33, 29, 0.5);margin-left: 30px;font-family: 'Inter';">In Depth:</p>
+
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_07.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_07.png" alt="" class="sidebar_white_icons"> Twitter</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_08.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_08.png" alt="" class="sidebar_white_icons"> Reddit</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_09.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_09.png" alt="" class="sidebar_white_icons"> Instagram</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_010.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_10.png" alt="" class="sidebar_white_icons"> Stocktwits</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_11.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_11.png" alt="" class="sidebar_white_icons"> Facebook</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_12.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_12.png" alt="" class="sidebar_white_icons"> youtube</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_13.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_13.png" alt="" class="sidebar_white_icons"> Discord</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_14.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_14.png" alt="" class="sidebar_white_icons"> Telegram</a>
+        </li>
+        <li class="active">
+          <a href="#"><img src="sibedar_black_icon/d_i_b_15.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_15.png" alt="" class="sidebar_white_icons"> 4Chan</a>
+        </li>
+        <li>
+          <a href="#"><img src="sibedar_black_icon/d_i_b_16.png" alt="" class="sidebar_black_icons"> <img
+              src="sidebar_white_icon/d_i_w_16.png" alt="" class="sidebar_white_icons"> News</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!------------Sidebar End-------------->
+  <!-- dashboard frist section and charts start-->
+  <div class="main-body">
+    <div class="containerr">
+      <!-- sentiment section -->
+      <div class="frist-section">
+        <div class="frist_section_head">
+          <button><img src="sibedar_black_icon/d_i_b_15.png" alt=""> 4Chan</button>
+
+          <select>
+            <option value="crypto">crypto</option>
+            <option value="stock">stock</option>
+            <option value="nft">nft</option>
+          </select>
+        </div>
+        <div class="row chartsRow">
+          <div class="col-lg-4">
+            <div class="sentiment">
+              <div class="sentiment_head">
+                <h3>Sentiment</h3>
+              </div>
+              <div class="customCircleCharts">
+                <!-- Green Chrat -->
+                <canvas
+                  id="greenChart"
+                  width="200"
+                  height="200"
+                  class="chartjs-render-monitor"
+                ></canvas>
+                <div class="chartContents">
+                  <div class="chartPer">65%</div>
+                  <div class="chartText">Positive</div>
+                  <img src="./images/chart-icon-1.png" alt="" />
+                </div>
+              </div>
+              <!-- <div class="wrapperMainDoughnet">
+                <div class="mainDoughnut">
+                  <canvas id="doughnut" width="280px"> </canvas>
+                </div>
+                <div class="sideWith">
+                  <p class="positive">Positive</p>
+                  <p class="negative">Negative</p>
+                  <img src="images/Ellipse 6702 (1).png" alt="">
+                  <p class="sideWidthBold"><span style="font-size: 19px
+                        ;">16%</span> <br> <span style="font-size: 14px;">Neutral</span></p>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="userActivity">
+              <div class="userActivity_head">
+                <h3>User Activity</h3>
+              </div>
+              <div class="user_70th_btn">
+                <button><span style="color: black; font-weight: bold;">70th</span> <br> percentile</button>
+                <span><img src="images/Ellipse 973.png" alt="" class="User_img1"></span>
+                <span><img src="images/Ellipse 974.png" alt="" class="User_img2"></span>
+                <span><img src="images/Line 2.png" alt="" class="user_line"></span>
+              </div>
+              <div class="wrappermainBarChart">
+                <div class="mainBarChart">
+                  <canvas id="barChart" height="155"> </canvas>
+                </div>
+              </div>
+              <b><i class="fa-solid fa-circle-exclamation"></i></b>
+              <b class="second_chart_b">The 1 day percentile of user activity</b>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="userActivity">
+              <div class="userActivity_head" style="margin-bottom:30px;">
+                <h3>Ticker Volume </h3>
+              </div>
+              <div class="wrappermainBarChart">
+                <div class="line_chart_pink">
+                  <canvas id="line_chart_pink" height="300"> </canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- row div -->
+        </div>
+      </div>
+      <!-- heaader rectangle start  -->
+      <div class="restangle_head">
+        <h3>Trending on 4Chan<h3>
+            <button>All Cryptos</button>
+            <button style="color:#808A9D ;background-color: #F1F6FE;">Catgegory</button>
+            <select class="my-2">
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+      </div>
+      <!-- heaader rectangle end  -->
+      <div class="dashboard">
+        <table class="table borderless mytable">
+          <thead>
+            <tr>
+              <th class="oddTh">
+                #
+                <i class="fa-solid fa-caret-up" style="
+                       margin-right: 30px;
+                       margin-left: 5px;
+                      "></i>
+                Name
+              </th>
+              <th>Price</th>
+              <th>%change Price</th>
+              <th>Mentions</th>
+              <th>%change Mentions</th>
+              <th>Sentiment</th>
+              <th>Quick Chart</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 10px; margin-left: 55px;font-size: 14px;"></i>
+                1 <img src="images/Image.png" alt="" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;"> Bitcoin </span> BTC
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart_green"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 2
+                <img src="images/Image (1).png" /> <span
+                  style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;">Etherium</span>BTC
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 3
+                <img src="images/Image (2).png" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;">Cardano</span> ADA
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart_green2"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 4
+                <img src="images/Image (3).png" alt="" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;"> Binanace</span> BNB
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart_green3"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 5
+                <img src="images/Image (4).png" alt="" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;">Tether </span>USDT
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943; font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart_green4"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 6
+                <img src="images/Image (5).png" alt="" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;">Polkadot</span> DOT
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart2"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 7
+                <img src="images/Image (6).png" alt="" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;">XRP</span>XRP
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart_green5"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 8
+                <img src="images/Image (7).png" alt="" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;">Bitcoin</span> BTC
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart_green6"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+            <tr>
+              <th>
+                <i class="fa-regular fa-star" style="margin-right: 15px; margin-left: 55px;font-size: 14px;"></i> 9
+                <img src="images/Image (8).png" alt="" />
+                <span style="color: rgba(0, 0, 0, 0.877);margin-right: 5px;">Etherium</span> BTC
+              </th>
+              <td>$XX,XXX</td>
+              <td style="color: #EA3943;font-size: 16px;"><i class="fa-solid fa-caret-down"></i> 0.65%</td>
+              <td style="color: #574d4d;">XX,XXX</td>
+              <td style="color: #16C784;font-size: 16px;"><i class="fa-solid fa-caret-up"></i> 0.65%</td>
+              <td>
+
+                <!-- table sentiment -->
+                <div class="sentiment_wrapper">
+                  <div class="red_sentiment"></div>
+                  <div class="gray_parsent">
+                    <div class="gray_parsent_indicator">
+                      15%
+                    </div>
+                  </div>
+                  <div class="green_sentiment"></div>
+                </div>
+                <!-- table sentiment -->
+              </td>
+              <td>
+                <div id="line_chart3"></div>
+              </td>
+              <td><i class="fa-solid fa-ellipsis-vertical"></i></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- dashboard pagination -->
+        <div class="dashboard_pagination">
+          <p>1 - 50 | Total [9668] </p>
+          <nav>
+            <ul class="pagination_item">
+              <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+              <li><a href="#" class="active">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li><a href="#">...</a></li>
+              <li><a href="#">100</a></li>
+              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+            </ul>
+          </nav>
+          <select class="my-2">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </div>
+        <!-- dashboard pagination -->
+        <!-- dashboard div -->
+      </div>
+    </div>
+    <div class="pageFooter">
+      <div class="row borderRow">
+        <div class="col-lg-5">
+          <a href="#">
+            <img src="./images/BuzzRating 3-02.png" alt="" />
+          </a>
+          <div class="subText">
+            Coalescing data from every corner of the internet to forecast
+            investment trends before they transpire.
+          </div>
+          <a class="socialIcon" href="#">
+            <i class="fa-brands fa-twitter"></i>
+          </a>
+        </div>
+        <div class="col-lg-3 my-4 my-lg-0">
+          <div class="footerHeading">Company</div>
+          <a class="footerLink" href="#">Benefits</a>
+          <a class="footerLink" href="#">Dashboard Preview</a>
+          <a class="footerLink" href="#">Pricing</a>
+          <a class="footerLink" href="#">FAQ</a>
+          <a class="footerLink" href="#">Contact Us</a>
+        </div>
+        <div class="col-lg-4">
+          <div class="footerHeading">Join Our Newsletter</div>
+          <div class="footerSearchArea">
+            <input type="text" name="" id="" placeholder="Your email address" />
+            <button class="footerBtn">Subscribe</button>
+            <div class="mainText mt-4">
+              *We know your time is important so we’ll try to send you only
+              the most relevant news and updates
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="subText my-0">
+            Copyright © 2022 BuzzRating | All Rights Reserved
+          </div>
+        </div>
+        <div class="col-lg-6 text-left text-lg-right mt-4 mt-lg-0">
+          <a class="footerLink odd mr-5" href="#">Terms and conditions</a>
+          <a class="footerLink odd" href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+    <!-- main-body div -->
+  </div>
+  <!-- line chart for table red color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#EA3943'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+
+
+  <!-- line chart for table green color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#16C784'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart_green'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <!-- line chart for table -->
+
+
+  <!-- line chart2 for table red color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#EA3943'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart2'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+
+
+  <!-- line chart for table green color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#16C784'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart_green2'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <!-- line chart for table -->
+
+
+  <!-- line chart for table red color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#EA3943'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart3'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+
+
+  <!-- line chart for table green color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#16C784'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart_green3'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <!-- line chart for table -->
+
+  <!-- line chart for table red color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#EA3943'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart4'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+
+
+  <!-- line chart for table green color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#16C784'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart_green4'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <!-- line chart for table green color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#16C784'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart_green5'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <!-- line chart for table green color -->
+  <script type="text/javascript">
+    google.charts.load('current', {
+      packages: ['corechart', 'line']
+    });
+    google.charts.setOnLoadCallback(drawBasic);
+
+    function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', '');
+
+      data.addRows([
+        [1, 12],
+        [1, 10],
+        [2, 23],
+        [3, 17],
+        [4, 18],
+        [5, 9],
+        [6, 11],
+        [7, 27],
+        [8, 33],
+        [9, 40],
+        [10, 32],
+        [11, 35],
+        [12, 30],
+        [13, 40],
+        [14, 42],
+        [15, 47],
+        [16, 44],
+        [17, 48],
+        [18, 52],
+        [19, 54],
+        [20, 42],
+        [21, 55],
+        [22, 56],
+        [23, 57],
+
+      ]);
+
+      var options = {
+        backgroundColor: 'none',
+        dataOpacity: 0,
+        colors: ['#16C784'],
+        width: "100",
+        height: "40",
+        hAxis: {
+          // title: 'Time',
+          baselineColor: 'none',
+          textColor: 'none',
+          gridlines: {
+            color: 'transparent',
+          }
+        },
+
+        vAxis: {
+          // title: 'Popularity',
+          // minValue: 0,
+          baselineColor: 'none',
+          gridlineColor: 'none',
+          textPosition: 'none',
+
+          gridlines: {
+            color: 'transparent'
+          }
+        },
+
+        chartArea: {
+          width: "100",
+          height: "20",
+          left: 0,
+          top: 1,
+        },
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('line_chart_green6'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <!-- line chart for table -->
+  <script>
+    // doughnut Chart
+    const dataDoughnut = {
+      labels: ["Twitter 23%", "Reddit 6% ", 'Behance 20%', ],
+      datasets: [{
+        label: '# of Votes',
+        data: [50, 12, 11],
+
+        backgroundColor: [
+          'rgba(234, 57, 67, 0.75)',
+          'rgba(22, 199, 132, 0.75)',
+          'rgba(234, 57, 67, 0.75)',
+        ],
+        borderColor: [
+          'rgba(234, 57, 67, 0.75)',
+          'rgba(22, 199, 132, 0.75)',
+          'rgba(234, 57, 67, 0.75)',
+        ],
+
+        cutout: '90',
+      }]
+    };
+    // config
+    const doughnutConfig = {
+      type: 'doughnut',
+      data: dataDoughnut,
+      options: {
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+            labels: {
+              pointStyle: 'circle',
+              usePointStyle: true
+            }
+          }
+        }
+      }
+
+    }
+
+    // data redering
+    const doughnut = new Chart(document.getElementById('doughnut'),
+      doughnutConfig
+    );
+
+    // barCHart Chart second chart
+    const dataForBar = {
+      labels: ["0.1%", "2.1% ", '14%', "34%", "66% ", '86%', '97.9%', "99.9%"],
+      datasets: [{
+        label: '# of Votes',
+        data: [10, 30, 50, 100, 100, 50, 30, 10],
+
+        backgroundColor: [
+          '#560BAD',
+          '#3A0CA3',
+          '#3F37C9',
+          '#4361EE',
+          '#4361EE',
+          '#3F37C9',
+          '#3A0CA3',
+          '#560BAD',
+
+        ],
+        borderColor: [
+          '#560BAD',
+          '#3A0CA3',
+          '#3F37C9',
+          '#4361EE',
+          '#4361EE',
+          '#3F37C9',
+          '#3A0CA3',
+          '#560BAD',
+        ],
+      }]
+    };
+    // config
+    const barchartConfig = {
+      type: 'bar',
+      data: dataForBar,
+      options: {
+        responsive: true,
+
+        plugins: {
+          legend: {
+            display: false,
+            labels: {
+              pointStyle: 'circle',
+              usePointStyle: true
+            }
+          }
+        },
+        scales: {
+
+          y: {
+            beginAtZero: true,
+            grid: {
+              display: false
+            }
+          },
+          x: {
+            grid: {
+              backgroundColor: '#B2B2B2'
+
+
+            }
+          }
+        },
+
+      }
+
+    }
+
+    // data redering
+    const barChart = new Chart(document.getElementById('barChart'),
+      barchartConfig
+    );
+    // chart number of 3
+    // barCHart Chart second chart
+    const dataForLine = {
+      labels: ["11:00", "12:00", '13:00', "14:00", "15:00", '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', ],
+      datasets: [{
+        label: '# of Votes',
+        data: [17.5, 18.5, 28.5, 25, 29, 37, 28.5, 25, 29, 30, 20],
+        pointRadius: 1.1,
+        tension: 0.5,
+
+        backgroundColor: [
+          'none',
+          'transparent',
+          'transparent',
+          'transparent',
+          'transparent',
+          'transparent',
+          'transparent',
+          'transparent',
+        ],
+        borderColor: [
+          '#E80054',
+        ],
+      }]
+    };
+    // config
+
+    const configForline = {
+      type: 'line',
+      data: dataForLine,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false,
+            labels: {
+              pointStyle: 'circle',
+              usePointStyle: true,
+            }
+          }
+        },
+        scales: {
+
+          y: {
+            beginAtZero: true,
+            grid: {
+              display: true,
+            },
+            title: {
+              display: true,
+              text: '# of mentions (hundreds)'
+            },
+          },
+          x: {
+            grid: {
+              // backgroundColor:'transparent',
+              display: false,
+            },
+            title: {
+              display: true,
+              text: 'Time (Universal)'
+            },
+          }
+        },
+
+      }
+
+    }
+    // data redering
+    const line_chart_pink = new Chart(document.getElementById('line_chart_pink'),
+      configForline
+    );
+  </script>
+  
+  <script>
+    // Green Chart 1
+    var ctx = document.getElementById("greenChart").getContext("2d");
+    var myChart = new Chart(ctx, {
+      type: "doughnut",
+      segmentShowStroke: false,
+
+      data: {
+        datasets: [
+          {
+            data: [100, 20],
+            backgroundColor: ["#16C784", "#ECFCFF"],
+            label: "Doughnut 1",
+          },
+          {
+            data: [35, 20],
+            backgroundColor: ["#EA3943", "#ECFCFF"],
+          },
+          {
+            data: [10, 10],
+            backgroundColor: ["#808A9D", "#ECFCFF"],
+          },
+        ],
+      },
+      options: {
+        elements: {
+          customCutout: true,
+          arc: {
+            borderWidth: 8,
+            borderColor: "white",
+          },
+        },
+        cutoutPercentage: 85,
+      },
+    });
+  </script>
+</body>
+
+</html>
