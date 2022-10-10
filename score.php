@@ -54,9 +54,39 @@ if($results->num_rows > 0){
 			$last_name = $item_bias['last_name'];
 		}
 
+
+
+		// get title....ect according to the article
+    	$query_detail = "SELECT * FROM bias_detail WHERE id = " . $item['bias_detail_id'];
+		$results_detail = mysqli_query($conn, $query_detail);
+		if($results_detail->num_rows > 0){
+			$item_detail = $results_detail->fetch_assoc();
+			
+			$bias_1_mentioned_count = (int)(trim($item_detail['bias_1_count']) ? $item_detail['bias_1_count'] : 0);
+			
+		}
+
 		// remove special charecters and to lowercase
 		$text = preg_replace("/[^A-Za-z0-9' -]/", "", strtolower($item['article_text']));
 		$count = count(array_intersect($negative_words, explode(" ", $text)));
+
+		$full_name_count = substr_count($text, strtolower($full_name));
+		$first_name_count = substr_count($text, strtolower($first_name));
+		$last_name_count = substr_count($text, strtolower($last_name));
+		
+		$bias_1_mentioned_count += $full_name_count;
+		if($first_name_count > 0)
+			$bias_1_mentioned_count += $first_name_count - $full_name_count;
+
+		if($last_name_count > 0)
+			$bias_1_mentioned_count += $last_name_count - $full_name_count;
+
+
+		$update_detail_sql = "UPDATE bias_detail SET bias_selected = '" . $default_bias_selected . "', bias_1_count = " . $bias_1_mentioned_count . " WHERE id = " . $item_detail['id'];
+
+		mysqli_query($conn, $update_detail_sql);
+
+		
 
 		$bias_1_negativity = $count;
       	$bias_selected = "bias_1";
@@ -68,9 +98,12 @@ if($results->num_rows > 0){
       	if(strpos($text, strtolower($full_name)) !== false || strpos($text, strtolower($first_name)) !== false || strpos($text, strtolower($last_name)) !== false) {
 		    
 		    $bias_1_negativity++;
-			$bias_neg_name = $scores['neg'];
-	      	$bias_neu_name = $scores['neu'];
-	      	$bias_pos_name = $scores['pos'];
+			// $bias_neg_name = $scores['neg'];
+	      	// $bias_neu_name = $scores['neu'];
+	      	// $bias_pos_name = $scores['pos'];
+			$bias_neg_name = $is_neg;
+	      	$bias_neu_name = $is_neu;
+	      	$bias_pos_name = $is_pos;
 		}
 
 		// Update 
