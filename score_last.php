@@ -77,16 +77,16 @@ if($results->num_rows > 0){
 
 		if($last_name_count > 0)
 			$bias_1_mentioned_count += $last_name_count - $full_name_count;
-		
-		$bias_selected = "bias_1";
 
+		$bias_selected = "bias_1";
 		$update_detail_sql = "UPDATE bias_detail SET bias_selected = '" . $bias_selected . "', bias_1_count = " . $bias_1_mentioned_count . " WHERE id = " . $item_detail['id'];
 
 		mysqli_query($conn, $update_detail_sql);
 
 		
+
 		$bias_1_negativity = $count;
-      	
+
       	$bias_neg_name = 0;
       	$bias_neu_name = 0;
       	$bias_pos_name = 0;
